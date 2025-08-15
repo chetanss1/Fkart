@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Fkart|Register</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 mx-auto shadow p-3">
+                <h5 class="text-center">User Register</h5>
+
+                {% if errmsg %}
+                <div class="alert alert-danger" role="alert">
+                    {{errmsg}}
+                  </div>
+                {% endif %}
+
+                {% if success %}
+                <div class="alert alert-success" role="alert">
+                    {{success}}
+                  </div>
+                {% endif %}
+                
+            <form id="regForm"  method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="Input1" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="Input1" name="fname" placeholder="Enter your name">
+                </div>
+                <div class="mb-3">
+                    <label for="Input2" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="Input2" name="uname" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="Input3" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="Input3" name="upass" placeholder="Enter password">
+                </div>
+                <div class="mb-3">
+                    <label for="Input4" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="Input4" name="ucpass">
+                </div>
+                <div class="mb-3 ">
+                    <input type="submit" value="Register" class="btn btn-danger">
+                    Already User?<a href="/login" style="text-decoration: none;">&nbsp;&nbsp;Login</a>
+
+                </div>
+            </form>
+        </div>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('regForm').onsubmit = function() {
+            // Clear the input field after submission
+            this.form.reset();
+        };
+    </script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/popper.js"></script>
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+</body>
+</html>
